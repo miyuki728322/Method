@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Rice — Method Sheet (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf8f4;
+    --ink:#1a1410;
+    --ink-soft:#3a322a;
+    --accent:#a2452f;
+    --rule:rgba(26,20,16,0.16);
+    --rule-strong:rgba(26,20,16,0.34);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --mono:'DM Mono','SFMono-Regular',monospace;
+    --jp:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#0d0b09;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .serif{font-family:var(--serif);}
+  .mono{font-family:var(--mono);}
+  .jp{font-family:var(--jp);}
+
+  /* ---- A4 page ---- */
+  .sheet{
+    width:210mm;height:297mm;
+    margin:24px auto;
+    background:var(--cream);color:var(--ink);
+    padding:12mm 13mm 11mm;
+    display:flex;flex-direction:column;
+    box-shadow:0 24px 70px rgba(0,0,0,0.5);
+    font-family:var(--serif);
+    overflow:hidden;
+  }
+
+  /* ---- header ---- */
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;
+    border-bottom:1.5px solid var(--rule-strong);padding-bottom:5mm;}
+  .hleft{min-width:0;}
+  .hright{flex:0 0 auto;}
+  .kick{font-family:var(--mono);font-size:7pt;letter-spacing:0.26em;text-transform:uppercase;color:var(--accent);font-weight:500;}
+  .htitle{font-size:21pt;font-weight:600;line-height:1.04;letter-spacing:-0.01em;margin-top:3mm;white-space:nowrap;}
+  .hsub{font-size:10.5pt;font-style:italic;color:var(--ink-soft);margin-top:2.2mm;}
+  .hright{text-align:right;font-family:var(--mono);font-size:7pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);line-height:1.7;}
+  .hright b{color:var(--ink);font-weight:500;}
+
+  /* ---- five stages strip ---- */
+  .stages{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:5mm;
+    border:1px solid var(--rule);}
+  .stage{padding:3mm 3.4mm 3.2mm;border-right:1px solid var(--rule);}
+  .stage:last-child{border-right:none;}
+  .stage .sn{font-family:var(--mono);font-size:8pt;color:var(--accent);font-weight:500;}
+  .stage .st{font-size:13pt;font-weight:600;line-height:1;margin-top:1.4mm;display:flex;align-items:baseline;gap:1.6mm;}
+  .stage .st .jp{font-size:8.5pt;color:var(--accent);font-weight:400;}
+  .stage .sd{font-size:8pt;line-height:1.28;color:var(--ink-soft);margin-top:1.6mm;}
+
+  /* ---- main two-column ---- */
+  .main{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-top:5.5mm;}
+  .col{display:flex;flex-direction:column;gap:4.2mm;}
+  .sec-h{font-family:var(--mono);font-size:7.5pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);
+    font-weight:500;display:flex;align-items:center;gap:2.5mm;}
+  .sec-h::after{content:"";flex:1;height:1px;background:var(--rule);}
+  .sec-h .jp{color:var(--ink-soft);letter-spacing:0.06em;font-size:8pt;}
+
+  /* numbered points */
+  .pts{display:flex;flex-direction:column;gap:2.6mm;margin-top:2.6mm;}
+  .pt{display:grid;grid-template-columns:6mm 1fr;gap:1mm;}
+  .pt .pn{font-family:var(--mono);font-size:8pt;color:var(--accent);font-weight:500;padding-top:0.4mm;}
+  .pt .ph{font-size:11pt;font-weight:600;line-height:1.08;}
+  .pt .pb{font-size:8.4pt;line-height:1.3;color:var(--ink-soft);margin-top:0.8mm;}
+  .pt .pb em,.note em,.cook em,.fail em{color:var(--ink);font-style:italic;}
+
+  /* ratio table */
+  .rtable{margin-top:2.6mm;border-top:1.5px solid var(--rule-strong);}
+  .rrow{display:grid;grid-template-columns:1fr auto;gap:2mm 4mm;align-items:baseline;
+    padding:1.9mm 0;border-bottom:1px solid var(--rule);}
+  .rrow .cond{font-size:10pt;font-weight:600;line-height:1.05;}
+  .rrow .cond .jp{font-size:7.5pt;color:var(--accent);font-weight:400;}
+  .rrow .ratio{font-family:var(--mono);font-size:9pt;font-weight:500;letter-spacing:0.01em;white-space:nowrap;text-align:right;}
+  .rrow .rn{grid-column:1 / -1;font-size:7.8pt;line-height:1.25;color:var(--ink-soft);margin-top:0.4mm;}
+
+  /* notes / callouts */
+  .note{margin-top:2.6mm;font-size:8.2pt;line-height:1.32;color:var(--ink-soft);
+    border-left:2px solid var(--accent);padding-left:3mm;}
+  .note b{color:var(--ink);font-weight:600;}
+
+  /* cook steps */
+  .cook{display:flex;flex-direction:column;gap:2.4mm;margin-top:2.6mm;}
+  .cstep{display:grid;grid-template-columns:6mm 1fr;gap:1mm;}
+  .cstep .cn{font-family:var(--mono);font-size:8pt;color:var(--accent);font-weight:500;padding-top:0.3mm;}
+  .cstep .cx{font-size:8.6pt;line-height:1.3;color:var(--ink-soft);}
+  .cstep .cx b{color:var(--ink);font-weight:600;}
+  .oldrule{margin-top:1mm;font-size:8pt;line-height:1.3;color:var(--ink-soft);border-left:2px solid var(--accent);padding-left:3mm;}
+  .oldrule .jp{color:var(--ink);}
+
+  /* ---- bottom band ---- */
+  .band{margin-top:auto;padding-top:5mm;display:grid;grid-template-columns:1fr 1fr;gap:7mm;
+    border-top:1.5px solid var(--rule-strong);}
+  .band .sec-h{margin-bottom:2.6mm;}
+  .dlist{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 5mm;}
+  .ditem .dt{font-size:9.5pt;font-weight:600;line-height:1.04;}
+  .ditem .dd{font-size:7.7pt;line-height:1.26;color:var(--ink-soft);margin-top:0.6mm;}
+  .fitem{display:flex;flex-direction:column;gap:0.5mm;}
+  .fitem .ft{font-size:9.5pt;font-weight:600;line-height:1.04;}
+  .fitem .fd{font-size:7.7pt;line-height:1.26;color:var(--ink-soft);}
+  .flist{display:grid;grid-template-columns:1fr 1fr;gap:2.4mm 5mm;}
+
+  .foot{margin-top:4.5mm;display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:6.5pt;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);
+    border-top:1px solid var(--rule);padding-top:2.5mm;}
+  .foot .accent{color:var(--accent);}
+
+  /* ---- print ---- */
+  @page{size:A4 portrait;margin:0;}
+  @media print{
+    html,body{background:#fff;}
+    .sheet{margin:0;box-shadow:none;width:210mm;height:297mm;}
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <!-- HEADER -->
+    <div class="head">
+      <div class="hleft">
+        <div class="kick">The Method · Kitchen Reference</div>
+        <div class="htitle serif">Japanese Rice — The Complete Method</div>
+        <div class="hsub serif">Wash · Hydrate · Measure · Cook · Rest — the professional standard, on one page.</div>
+      </div>
+      <div class="hright">
+        Baseline ratio<br><b>1 : 1.20 by weight</b><br>
+        Soak 30–60 min<br>Rest 10 min lid-on
+      </div>
+    </div>
+
+    <!-- FIVE STAGES -->
+    <div class="stages">
+      <div class="stage"><div class="sn">01</div><div class="st serif">Wash<span class="jp">研ぐ</span></div><div class="sd serif">Rinse off surface starch until water runs translucent.</div></div>
+      <div class="stage"><div class="sn">02</div><div class="st serif">Hydrate<span class="jp">浸水</span></div><div class="sd serif">Rest the drained grain so it absorbs water to the core.</div></div>
+      <div class="stage"><div class="sn">03</div><div class="st serif">Measure<span class="jp">計量</span></div><div class="sd serif">Weigh rice and water to a ratio — never by eye.</div></div>
+      <div class="stage"><div class="sn">04</div><div class="st serif">Cook<span class="jp">炊く</span></div><div class="sd serif">Follow the heat curve: boil, low simmer, then off.</div></div>
+      <div class="stage"><div class="sn">05</div><div class="st serif">Rest<span class="jp">蒸らす</span></div><div class="sd serif">Steam 10 min lid-on, then fluff to release moisture.</div></div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <!-- LEFT: WASH + WATER -->
+      <div class="col">
+        <div>
+          <div class="sec-h">How to Wash <span class="jp">研ぐ</span></div>
+          <div class="pts">
+            <div class="pt"><div class="pn">01</div><div><div class="ph serif">The first water, fast</div><div class="pb serif">Add cold water, swirl three or four times, and <em>drain at once</em>. The grain drinks fastest on first contact — don't let it sit in dusty water.</div></div></div>
+            <div class="pt"><div class="pn">02</div><div><div class="ph serif">Gentle turns, no force</div><div class="pb serif">Cup your hand and turn with light pressure — the <em>togi</em> motion — ten to fifteen rotations. You are rinsing, not grinding.</div></div></div>
+            <div class="pt"><div class="pn">03</div><div><div class="ph serif">Repeat until translucent</div><div class="pb serif">Fresh water, turn, drain — two or three rounds — until cloudy-translucent, not perfectly clear. Over-washing strips flavour.</div></div></div>
+            <div class="pt"><div class="pn">04</div><div><div class="ph serif">Drain, then rest</div><div class="pb serif">Let the damp grain stand so water reaches the core. <em>By season:</em> ~30 min in summer, up to an hour in winter when cold water soaks in slowly.</div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="sec-h">Water Quality <span class="jp">軟水</span></div>
+          <div class="note serif"><b>Use soft water — under 60&nbsp;mg/L.</b> Cooked rice is more than half water by weight, so water is an ingredient. Hard water's calcium and magnesium bind the grain and slow even absorption — rice cooks firmer and drier, its sweetness muted. Use filtered or bottled soft water, and soak in it too: the grain drinks most during the rest.</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: RATIO + COOK -->
+      <div class="col">
+        <div>
+          <div class="sec-h">The Water Ratio <span class="jp">計量</span></div>
+          <div class="rtable">
+            <div class="rrow"><span class="cond serif">New crop <span class="jp">(shinmai)</span></span><span class="ratio">1 : 1.10–1.15</span><span class="rn serif">Fresh rice holds its own moisture — pull water back.</span></div>
+            <div class="rrow"><span class="cond serif">Standard modern stock</span><span class="ratio">1 : 1.20</span><span class="rn serif">The reliable baseline. Start here, adjust by result.</span></div>
+            <div class="rrow"><span class="cond serif">Older / drier stock</span><span class="ratio">1 : 1.20–1.25</span><span class="rn serif">Dried-out grain drinks more to reach the same core.</span></div>
+            <div class="rrow"><span class="cond serif">Sushi rice (firmer)</span><span class="ratio">1 : 1.00–1.10</span><span class="rn serif">Cook firm — seasoned vinegar adds moisture after.</span></div>
+            <div class="rrow"><span class="cond serif">Low-amylose <span class="jp">(Milky Queen)</span></span><span class="ratio">1 : 1.00–1.05</span><span class="rn serif">Already soft and sticky; less water keeps grains intact.</span></div>
+          </div>
+          <div class="note serif"><b>Weigh, don't measure by volume</b> — cups drift 15%+. Seasonal trim: summer −2–3% with a shorter soak; winter +2–3% and a longer cold soak.</div>
+        </div>
+        <div>
+          <div class="sec-h">How to Cook <span class="jp">炊く</span></div>
+          <div class="cook">
+            <div class="cstep"><div class="cn">01</div><div class="cx serif"><b>Weigh, wash, rest 30 min</b>, then weigh the water to your chosen ratio.</div></div>
+            <div class="cstep"><div class="cn">02</div><div class="cx serif"><b>Lid on.</b> Medium-high to a boil over ~5 min, then drop to low and simmer 12–13 min. <em>Do not lift the lid.</em></div></div>
+            <div class="cstep"><div class="cn">03</div><div class="cx serif"><b>Off the heat — steam.</b> Stand covered a full 10 min; residual steam finishes the core and sets the texture.</div></div>
+            <div class="cstep"><div class="cn">04</div><div class="cx serif"><b>Fluff and release.</b> Fold with a cut-and-turn motion — <em>shari-kiri</em> — so every grain stays separate and glossy.</div></div>
+          </div>
+          <div class="oldrule serif">Old rule: <span class="jp">はじめチョロチョロ、中パッパ</span> — start low, then a strong middle boil. The curve, not the clock alone.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAND -->
+    <div class="band">
+      <div>
+        <div class="sec-h">Discipline</div>
+        <div class="dlist">
+          <div class="ditem"><div class="dt serif">Honour the rest</div><div class="dd serif">The 10-min lid-on steam is cooking, not waiting. Plate early and the centre stays watery.</div></div>
+          <div class="ditem"><div class="dt serif">Lid never lifts mid-cook</div><div class="dd serif">Each peek dumps steam and heat; rice cooks unevenly. Trust the curve and timer.</div></div>
+          <div class="ditem"><div class="dt serif">Respect the heat curve</div><div class="dd serif">Hard boil to start, gentle simmer to finish. Rhythm beats raw power.</div></div>
+          <div class="ditem"><div class="dt serif">Fluff immediately</div><div class="dd serif">Cut and turn the moment the rest ends, or the packed base steams to mush.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-h">Common Failures</div>
+        <div class="flist">
+          <div class="fitem"><div class="ft serif">Gummy &amp; pasty</div><div class="fd serif"><em>Cause:</em> surface starch left on, or rice crushed. <em>Fix:</em> rinse gently to translucent.</div></div>
+          <div class="fitem"><div class="ft serif">Hard, chalky core</div><div class="fd serif"><em>Cause:</em> under-hydrated. <em>Fix:</em> rest 30 min; nudge ratio up.</div></div>
+          <div class="fitem"><div class="ft serif">Scorched base</div><div class="fd serif"><em>Cause:</em> heat too high, too long. <em>Fix:</em> lower the flame; trust residual steam.</div></div>
+          <div class="fitem"><div class="ft serif">Wet &amp; collapsing</div><div class="fd serif"><em>Cause:</em> too much water, or new crop on an old ratio. <em>Fix:</em> pull water back 5%.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Japanese Rice — The Complete Method</span>
+      <span><span class="accent">Kitchen Reference</span> · A4 · Print at 100%</span>
+    </div>
+
+  </div>
+</body>
+</html>
