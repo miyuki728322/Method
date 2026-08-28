@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method — Japanese Technique Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #faf8f4;
+    --ink: #1c1915;
+    --faint: #8a8378;
+    --line: rgba(28,25,21,0.14);
+    --copper: #b87333;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', 'Shippori Mincho', serif;
+    min-height: 100vh;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 28px 96px;
+  }
+
+  header { margin-bottom: 64px; }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: clamp(38px, 7vw, 56px);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+
+  h1 .jp {
+    font-family: 'Shippori Mincho', serif;
+    display: block;
+    font-size: 0.42em;
+    margin-top: 14px;
+    color: var(--faint);
+    letter-spacing: 0.3em;
+  }
+
+  .intro {
+    margin-top: 26px;
+    font-size: 19px;
+    font-style: italic;
+    color: #4d463d;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+
+  ol.library { list-style: none; border-top: 1px solid var(--line); }
+
+  ol.library li { border-bottom: 1px solid var(--line); }
+
+  ol.library a {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: baseline;
+    gap: 20px;
+    padding: 26px 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.18s ease;
+  }
+
+  ol.library a:hover,
+  ol.library a:focus-visible {
+    background: rgba(184,115,51,0.06);
+    outline: none;
+  }
+
+  ol.library a:focus-visible { box-shadow: inset 2px 0 0 var(--copper); }
+
+  .kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 30px;
+    color: var(--copper);
+    line-height: 1;
+  }
+
+  .title-en {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .title-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-top: 7px;
+  }
+
+  .format {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+
+  footer {
+    margin-top: 72px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--faint);
+  }
+
+  @media (max-width: 520px) {
+    ol.library a { grid-template-columns: 44px 1fr; }
+    .format { display: none; }
+    .kanji { font-size: 24px; }
+    .title-en { font-size: 21px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ol.library a { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Method · A working library</div>
+    <h1>Japanese Technique<span class="jp">日本料理の技法帖</span></h1>
+    <p class="intro">Kaiseki-trained technique, explained for the Western professional kitchen. Written and tested by Miyuki — London.</p>
+  </header>
+
+  <ol class="library">
+    <li>
+      <a href="knife.html">
+        <span class="kanji">包丁</span>
+        <span>
+          <span class="title-en">The Japanese Knife</span>
+          <span class="title-sub">包丁の道 · Geometry, sharpening, care</span>
+        </span>
+        <span class="format">Guide · 11 ch</span>
+      </a>
+    </li>
+    <li>
+      <a href="rice.html">
+        <span class="kanji">米</span>
+        <span>
+          <span class="title-en">The Rice Method</span>
+          <span class="title-sub">米の炊き方 · Ratios, varieties, logic</span>
+        </span>
+        <span class="format">Slides · 21</span>
+      </a>
+    </li>
+    <li>
+      <a href="shime-saba.html">
+        <span class="kanji">鯖</span>
+        <span>
+          <span class="title-en">Shime Saba</span>
+          <span class="title-sub">締め鯖 · Salt &amp; vinegar cured mackerel</span>
+        </span>
+        <span class="format">Slides</span>
+      </a>
+    </li>
+    <li>
+      <a href="trout-tataki.html">
+        <span class="kanji">鱒</span>
+        <span>
+          <span class="title-en">Trout Tataki</span>
+          <span class="title-sub">鱒のたたき · Chalk stream trout</span>
+        </span>
+        <span class="format">Slides</span>
+      </a>
+    </li>
+    <li>
+      <a href="kobujime.html">
+        <span class="kanji">昆布</span>
+        <span>
+          <span class="title-en">Kobujime</span>
+          <span class="title-sub">昆布締め · Curing fish between kombu</span>
+        </span>
+        <span class="format">Guide · 7 steps</span>
+      </a>
+    </li>
+  </ol>
+
+  <footer>MIYUKI · LONDON — 完璧より継続</footer>
+</div>
+</body>
+</html>
